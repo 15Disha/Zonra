@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zonra – Your Zone to Build</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+ <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin:0; padding:0; overflow-x:hidden; color:white;
+      background: #0f172a;
+      position: relative;
+    }
+    canvas#networkBG { position: fixed; top:0; left:0; z-index:0; width:100%; height:100%; }
+
+    /* Hero animations */
+    .floatText { animation: floatText 2.5s ease-in-out infinite alternate; }
+    @keyframes floatText { 0% { transform: translateY(0px); } 100% { transform: translateY(-15px); } }
+    .pulseCTA { animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+
+    /* Card hover effect with gradient blend */
+    .card-hover {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: linear-gradient(135deg, rgba(0,200,255,0.2), rgba(255,0,150,0.2));
+    }
+    .card-hover:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+      background: linear-gradient(135deg, rgba(0,200,255,0.4), rgba(255,0,150,0.4));
+    }
+
+/* Challenges hover effect */
+.problem-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.08); /* transparent base */
+}
+
+.problem-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+  background: linear-gradient(135deg, rgba(0,200,255,0.2), rgba(255,0,150,0.2));
+}
+
+
+    /* Typing animation */
+    .animated-text {
+      color: #e0e7ff;
+      white-space: pre-wrap;
+      min-height: 3rem;
+      font-size: 1rem;
+      overflow: hidden;
+    }
+    .animated-text.typing::after {
+      content: '|';
+      display: inline-block;
+      width: 1ch;
+      margin-left: 2px;
+      animation: blink 0.75s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+  </style>
+</head>
+<body>
+
+<!-- Network Background Canvas -->
+<canvas id="networkBG"></canvas>
+
+<!-- Hero Section -->
+<section class="min-h-screen flex flex-col justify-center items-center text-center px-6 relative z-10">
+  <img src="D:\Downloads\Screenshot_2025-08-30_201454-removebg-preview.png" alt="Zonra Logo" class="w-32 h-32 mb-6">
+  <h1 class="text-7xl font-[Lora] tracking-wide mb-4 floatText drop-shadow-lg">
+  ZONRA
+</h1>
+
+
+  <br>
+  <p class="max-w-3xl px-4 md:px-0 mx-auto mb-8 text-gray-200 text-lg md:text-xl leading-relaxed md:leading-loose text-center">
+  <span class="font-semibold text-white">
+    A platform where <span class="text-indigo-400">creators, changemakers, startup enthusiasts, students, suppliers, investors and mentors</span> come together to explore ideas, plan growth, access essential resources, and connect with the right network.
+  </span>
+  <br>
+  <span class="mt-2 block text-gray-300">
+    Everything you need under one roof, guided every step of the way.
+  </span>
+</p>
+
+
+  <a href="#connect" class="px-8 py-4 bg-white text-blue-800 font-bold rounded-full shadow-lg hover:scale-105 transition transform pulseCTA">
+    Build Your Own Zone
+  </a>
+</section>
+<br>
+<br>
+<section class="py-16 px-6 text-center relative z-10">
+  <!-- Professional Heading -->
+ <h2 class="text-4xl font-[Roboto_Condensed] font-bold mb-12">
+  Navigating Startup Challenges
+</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    
+    <!-- Box 1 -->
+    <div class="problem-card p-6 rounded-xl shadow-lg flex flex-col justify-between h-full">
+      <h3 class="text-2xl font-bold mb-4">Idea Validation and Market Insights</h3>
+      <p class="text-gray-200">Founders struggle to validate if the market truly needs their idea, face confusion in competitor analysis, trend tracking, and SWOT insights—making decisions unclear.</p>
+    </div>
+
+    <!-- Box 2 -->
+    <div class="problem-card p-6 rounded-xl shadow-lg flex flex-col justify-between h-full">
+      <h3 class="text-2xl font-bold mb-4">Startup Resource Barriers and Networking</h3>
+      <p class="text-gray-200">Finding and connecting with reliable suppliers and manufacturers is often slow, confusing, and expensive</p>
+    </div>
+
+    <!-- Box 3 -->
+    <div class="problem-card p-6 rounded-xl shadow-lg flex flex-col justify-between h-full">
+      <h3 class="text-2xl font-bold mb-4">Finding The Right Customers</h3>
+      <p class="text-gray-200">Startups often struggle to identify their ideal customers.
+Reaching the right audience for your product or service can be confusing and time-consuming.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Zonra Solutions / Features Section -->
+<section class="py-16 px-6 text-center relative z-10 bg-white/10 rounded-2xl mx-6 my-20 shadow-xl">
+  <h2 class="text-4xl font-bold mb-12">Zonra for Startups</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+
+    <div class="card-hover p-8 rounded-xl shadow-lg bg-cyan-700/40">
+      <h3 class="text-2xl font-bold mb-3">Know Your Market and Customers</h3>
+      <p class="animated-text" data-text="Wondering if your idea will work? Zonra checks market demand, analyzes competitors, and delivers SWOT insights—instantly."></p>
+    </div>
+
+    <div class="card-hover p-8 rounded-xl shadow-lg bg-purple-700/40">
+      <h3 class="text-2xl font-bold mb-3">Your Personalized Startup Roadmap</h3>
+      <p class="animated-text" data-text="Not sure what steps to take next? Zonra crafts a personalized, stage-wise roadmap to guide your startup from idea to growth."></p>
+    </div>
+
+   <div class="card-hover p-8 rounded-xl shadow-lg bg-blue-700/40">
+      <h3 class="text-2xl font-bold mb-3">Smart Sourcing Marketplace</h3>
+      <p class="animated-text" data-text="Cut costs and save time—Zonra links you to reliable suppliers and resources, giving startups an efficient marketplace under one roof."></p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+function typeText(element) {
+  const text = element.dataset.text;
+  element.textContent = "";
+  let i = 0;
+  function type() {
+    if(i < text.length){
+      element.textContent += text[i++];
+      setTimeout(type, 25);
+    } else {
+      element.classList.remove('typing');
+    }
+  }
+  element.classList.add('typing');
+  type();
+}
+
+document.querySelectorAll('.card-hover').forEach(card => {
+  const textEl = card.querySelector('.animated-text');
+  card.addEventListener('mouseenter', () => {
+    if(!textEl.dataset.typed){
+      typeText(textEl);
+      textEl.dataset.typed = true;
+    }
+  });
+});
+</script>
+
+<!-- Connect & Prebook Section -->
+<section id="connect" class="py-16 px-6 text-center relative z-10">
+  <h2 class="text-4xl font-bold mb-4">Shape The Future With Zonra</h2>
+<br>
+  <p class="mb-6 text-lg text-gray-200 max-w-xl mx-auto">
+    Are you a creator, founder, or innovator facing challenges in building your startup? Join our early access program to share your feedback and help us craft a platform designed to tackle real startup problems efficiently.
+  </p>
+  <div class="flex flex-col md:flex-row justify-center gap-6 mb-6 text-center">
+  <!-- Email Button -->
+  <a href="https://mail.google.com/mail/?view=cm&to=zonra23@gmail.com" target="_blank"
+     class="px-8 py-4 bg-white text-blue-800 font-bold rounded-full shadow-lg hover:scale-105 transition transform pulseCTA">
+     Email Us
+  </a>
+
+  <!-- Prebook / Feedback Button -->
+  <a href="javascript:void(0)" id="ctaButton" 
+     class="px-8 py-4 bg-white text-blue-800 font-bold rounded-full shadow-lg hover:scale-105 transition transform pulseCTA">
+     Prebook / Share Feedback
+  </a>
+</div>
+
+<!-- Manual Email Line -->
+<p class="mt-4 text-sm text-gray-600 text-center">
+   Or manually email us at: 
+   <span class="font-semibold text-blue-700">zonra23@gmail.com</span>
+</p>
+
+  <p class="text-gray-400 italic">
+    Thank you for joining us – let’s create impactful future together!
+  </p>
+</section>
+
+<!-- Modal Overlay -->
+<div id="ctaModal" class="fixed inset-0 bg-black/60 flex items-center justify-center hidden z-50">
+  <!-- Modal Content -->
+  <div class="bg-[#0f172a] rounded-2xl shadow-2xl p-8 max-w-md w-full text-center border border-white/10">
+    <h2 class="text-3xl md:text-4xl font-extrabold mb-6 text-white drop-shadow-md">Choose an Option</h2>
+    <p class="mb-6 text-gray-300 text-lg md:text-xl">
+      Would you like to share feedback or prebook early access?
+    </p>
+    
+    <div class="flex flex-col md:flex-row justify-center gap-4">
+      <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAO__Uh9L2FUN05ZQlJETU5XMjhNMjYzMlI3SjVVSDVWVS4u" target="_blank" 
+         class="px-6 py-3 bg-blue-600 text-white rounded-xl font-bold hover:scale-105 transition transform">
+         Share Feedback
+      </a>
+      <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAO__Uh9L2FUNTBQMDVETDJRQ0tST0QxTEhISjFaVjU3NS4u" target="_blank" 
+         class="px-6 py-3 bg-purple-600 text-white rounded-xl font-bold hover:scale-105 transition transform">
+         Prebook Early Access
+      </a>
+    </div>
+
+    <button id="closeModal" class="mt-6 text-gray-400 hover:text-gray-200 font-semibold">
+      Cancel
+    </button>
+  </div>
+</div>
+
+
+<!-- Footer -->
+<footer class="py-6 text-center text-gray-300 relative z-10">
+  © 2025 Zonra. All rights reserved. | Your Zone to Build
+</footer>
+
+<script>
+  // ScrollReveal with repeat on scroll
+ScrollReveal().reveal('section h2', { delay: 200, origin: 'top', distance: '40px', duration: 800, reset: true });
+ScrollReveal().reveal('section p', { delay: 400, origin: 'bottom', distance: '30px', duration: 800, reset: true });
+ScrollReveal().reveal('.card-hover', { interval: 200, origin: 'bottom', distance: '30px', duration: 800, reset: true });
+
+// Typing animation on hover remains same
+document.querySelectorAll('.card-hover').forEach(card => {
+  const textEl = card.querySelector('.animated-text');
+  card.addEventListener('mouseenter', () => {
+    if(!textEl.dataset.typed){
+      typeText(textEl);
+      textEl.dataset.typed = true; // prevent retrigger on same hover
+    }
+  });
+});
+
+
+  // Network Background Canvas
+  const canvas = document.getElementById('networkBG');
+  const ctx = canvas.getContext('2d');
+  let width = canvas.width = window.innerWidth;
+  let height = canvas.height = window.innerHeight;
+
+  const points = [];
+  const POINTS = 50;
+  for(let i=0;i<POINTS;i++){
+    points.push({x:Math.random()*width, y:Math.random()*height, vx:(Math.random()-0.5)/1.5, vy:(Math.random()-0.5)/1.5});
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,width,height);
+    for(let i=0;i<POINTS;i++){
+      const p = points[i];
+      p.x += p.vx; p.y += p.vy;
+      if(p.x<0 || p.x>width) p.vx*=-1;
+      if(p.y<0 || p.y>height) p.vy*=-1;
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,2,0,Math.PI*2);
+      ctx.fillStyle = 'rgba(255,255,255,0.7)';
+      ctx.fill();
+    }
+    for(let i=0;i<POINTS;i++){
+      for(let j=i+1;j<POINTS;j++){
+        const dx = points[i].x - points[j].x;
+        const dy = points[i].y - points[j].y;
+        const dist = Math.sqrt(dx*dx+dy*dy);
+        if(dist<150){
+          ctx.beginPath();
+          ctx.moveTo(points[i].x, points[i].y);
+          ctx.lineTo(points[j].x, points[j].y);
+          ctx.strokeStyle='rgba(255,255,255,'+(0.2-(dist/750))+')';
+          ctx.lineWidth=1;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+  window.addEventListener('resize', ()=>{ width=canvas.width=window.innerWidth; height=canvas.height=window.innerHeight; });
+</script>
+
+<script>
+  const modal = document.getElementById('ctaModal');
+  const openBtn = document.getElementById('ctaButton');
+  const closeBtn = document.getElementById('closeModal');
+
+  openBtn.addEventListener('click', () => {
+    modal.classList.remove('hidden');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.classList.add('hidden');
+  });
+
+  modal.addEventListener('click', (e) => {
+    if(e.target === modal) modal.classList.add('hidden');
+  });
+</script>
+
+</body>
+</html>
